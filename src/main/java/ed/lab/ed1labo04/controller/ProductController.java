@@ -26,14 +26,12 @@ public class ProductController {
             @RequestBody CreateProductRequest createProductRequest) {
 
         try {
-
             ProductEntity productEntity =
                     productService.createProduct(createProductRequest);
 
-            return ResponseEntity.ok(productEntity);
+            return ResponseEntity.status(201).body(productEntity);
 
         } catch (IllegalArgumentException exception) {
-
             return ResponseEntity.badRequest().build();
         }
     }
